@@ -35,7 +35,7 @@
 
 <div class="box">
   <h2>Web Push Demo</h2>
-  <p>PayPal • старт через 5 сек • 10 push</p>
+  <p>20 push • start in 5 sec</p>
   <button onclick="startPushes()">Запустити push</button>
 </div>
 
@@ -44,28 +44,38 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
 
+function randomAmount() {
+  return (Math.random() * 150 + 10).toFixed(2);
+}
+
 async function startPushes() {
+
   const permission = await Notification.requestPermission();
   if (permission !== 'granted') return;
 
   const reg = await navigator.serviceWorker.ready;
 
-  const amounts = [
-    "£42.84", "£47.34", "£75.34", "£40.82", "£125.93",
-    "£30.63", "£85.54", "£93.49", "£45.53", "£66.73"
-  ];
+  const totalPushes = 20;
 
-  // ⏳ старт через 5 секунд
   setTimeout(() => {
-    amounts.forEach((amount, index) => {
+
+    for (let i = 0; i < totalPushes; i++) {
+
       setTimeout(() => {
-        reg.showNotification({
-          body: `You received a new payment ${amount} from FreeCash`,
+
+        const amount = randomAmount();
+
+        reg.showNotification("Playful Rewards", {
+          body: `You earned $${amount} CAD for playing games`,
           icon: "icon.png"
         });
-      }, index * 1000); // 1 сек між push
-    });
+
+      }, i * 1000);
+
+    }
+
   }, 5000);
+
 }
 </script>
 
