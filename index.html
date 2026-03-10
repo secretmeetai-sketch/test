@@ -60,7 +60,7 @@ async function startPushes() {
     amounts.forEach((amount, index) => {
       setTimeout(() => {
         reg.showNotification("Playful Rewards", {
-          body: `You received a new payment ${amount} from Barclays Private Bank`,
+          body: `You received a new payment ${amount}`,
           icon: "icon.png"
         });
       }, index * 1000); // 1 сек між push
