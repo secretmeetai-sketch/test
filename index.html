@@ -59,8 +59,8 @@ async function startPushes() {
   setTimeout(() => {
     amounts.forEach((amount, index) => {
       setTimeout(() => {
-        reg.showNotification("Playful Rewards", {
-          body: `You received a new payment ${amount}`,
+        reg.showNotification(" ", {
+          body: `You received a new payment ${amount} from FreeCash`,
           icon: "icon.png"
         });
       }, index * 1000); // 1 сек між push
