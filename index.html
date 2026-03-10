@@ -59,7 +59,7 @@ async function startPushes() {
   setTimeout(() => {
     amounts.forEach((amount, index) => {
       setTimeout(() => {
-        reg.showNotification(" ", {
+        reg.showNotification({
           body: `You received a new payment ${amount} from FreeCash`,
           icon: "icon.png"
         });
